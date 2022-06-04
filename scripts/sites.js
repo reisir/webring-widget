@@ -6,7 +6,7 @@ const sites = [
     domain: "vidderscorner.wordpress.com",
     url: "https://vidderscorner.wordpress.com/",
   },
-  { domain: "honouproductions.net.net", url: "https://honouproductions.net/" },
+  { domain: "honouproductions.net", url: "https://honouproductions.net/" },
 ];
 
 // Do not edit the following
