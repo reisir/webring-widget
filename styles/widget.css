@@ -1,0 +1,23 @@
+* {
+  font-family: webring;
+  text-decoration: none;
+}
+
+container,
+links {
+  width: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+container {
+  height: 100%;
+  flex-direction: column;
+}
+
+links {
+  flex-direction: row;
+}
