@@ -2,28 +2,45 @@
   <head>
     <title>webring-widget</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <style>
       @font-face {
-        font-family: "webring";
+        font-family: "DotGothic16";
         font-style: normal;
         font-weight: 400;
         src: url(./fonts/DotGothic16-Regular.ttf) format("truetype");
       }
+      @font-face {
+        font-family: "Kosugi Maru";
+        font-style: normal;
+        font-weight: 400;
+        src: url(./fonts/KosugiMaru-Regular.ttf) format("truetype");
+      }
+      @font-face {
+        font-family: "Mochiy Pop P One";
+        font-style: normal;
+        font-weight: 400;
+        src: url(./fonts/MochiyPopPOne-Regular.ttf) format("truetype");
+      }
+      @font-face {
+        font-family: "Rampart One";
+        font-style: normal;
+        font-weight: 400;
+        src: url(./fonts/RampartOne-Regular.ttf) format("truetype");
+      }
     </style>
-
     <link rel="stylesheet" href="styles/widget.css" />
   </head>
 
   <body>
-    <container>
+    <widget>
       <span id="title">sashimi-webring</span>
       <links>
-        <a href="" id="previous">Previous</a>
-        <span id="current"></span>
-        <a href="" id="next">Next</a>
+        <span id="current">
+          <a href="" target="_top" class="anchored" id="previous">previous</a>
+          <a href="" target="_top" class="anchored" id="next">next</a>
+        </span>
       </links>
-    </container>
+    </widget>
     <script src="scripts/sites.js"></script>
     <script src="scripts/widget.js"></script>
   </body>

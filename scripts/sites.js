@@ -1,3 +1,4 @@
+// Array of sites in the webring
 const sites = [
   { domain: "amv.tools", url: "https://amv.tools/" },
   { domain: "sashimi.khat.us", url: "https://sashimi.khat.us" },
@@ -7,6 +8,8 @@ const sites = [
   },
   { domain: "honouproductions.net.net", url: "https://honouproductions.net/" },
 ];
+
+// Do not edit the following
 
 // monkeywrench a circular access method to the array
 sites.circular = (i) => {

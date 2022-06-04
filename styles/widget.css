@@ -1,23 +1,38 @@
-* {
-  font-family: webring;
-  text-decoration: none;
+:root {
+  --webring-widget-gap: 1rem;
 }
 
-container,
+widget,
 links {
   width: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
 }
 
-container {
+widget {
   height: 100%;
   flex-direction: column;
 }
 
 links {
   flex-direction: row;
+}
+
+#current {
+  position: relative;
+}
+
+.anchored {
+  position: absolute;
+  top: 0;
+}
+
+#previous.anchored {
+  right: calc(100% + var(--webring-widget-gap));
+}
+
+#next.anchored {
+  left: calc(100% + var(--webring-widget-gap));
 }

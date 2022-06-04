@@ -1,42 +1,50 @@
-// Gets referrer
-function getReferrer() {
-  const referrer = document.referrer || document.location;
-  if (!referrer) return;
-  const url = new URL(referrer);
-  return url.hostname || "";
+// Get widget embed url and params
+const localURL = new URL(window.location);
+const localParams = localURL.searchParams;
+
+// Get widget elements
+const $widget = document.getElementsByTagName("widget")[0];
+const $current = document.getElementById("current");
+const $previous = document.getElementById("previous");
+const $next = document.getElementById("next");
+const $title = document.getElementById("title");
+
+// Override font-family to start loading the font asap
+{
+  const fontFamily = localParams.get("font");
+  if (fontFamily) $widget.style.fontFamily = fontFamily;
 }
 
-// Sets middle item content
-function setCurrentItem() {
-  const element = document.getElementById("current");
-  element.textContent = getReferrer();
+// Get referrer
+const referrer = (() => {
+  const r = document.referrer || document.location;
+  if (!r) return;
+  else return new URL(r).hostname;
+})();
+
+// Set middle item content
+{
+  $current.prepend(referrer);
 }
 
-// Allows widget title overrides
-function setWidgetTitle() {
-  const url = new URL(window.location);
-  const params = url.searchParams;
-  const name = params.get("name");
-  if (!name) return;
-  const element = document.getElementById("title");
-  element.textContent = params.get("name");
+// Allow widget title overrides
+{
+  const title = localParams.get("title");
+  if (!title) {
+  } else {
+    if (title == 0 || title == "false") $title.remove();
+    else $title.textContent = title;
+  }
 }
 
-function setPreviousAndNext() {
-  const referrer = getReferrer();
-  const currentIndex = sites.findIndex((s) => s.domain === getReferrer());
+// Set previous and next href from sites
+{
+  const currentIndex = sites.findIndex((s) => s.domain === referrer);
+  if (currentIndex === -1) console.error(`You'r not in the webring!!! D:`);
 
   const previous = sites.circular(currentIndex - 1);
-  const previousElement = document.getElementById("previous");
-  previousElement.textContent = previous.domain;
+  $previous.href = previous.url;
 
   const next = sites.circular(currentIndex + 1);
-  const nextElement = document.getElementById("next");
-  nextElement.textContent = next.domain;
-
-  console.log(previous, next);
+  $next.href = next.url;
 }
-
-setCurrentItem();
-setPreviousAndNext();
-setWidgetTitle();
