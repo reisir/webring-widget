@@ -22,7 +22,7 @@ Example of embedding the widget in a header
 
 ### editing or removing the title
 
-You can remove the title by adding `?title=false` to the end of the iframe src attribute. You can also change the title by changing `false` to any text you want.
+You can change the default title by adding `?title=text` to the end of the iframe src attribute. To remove the title, set `?title` to `false` or `0`.
 
 ### font-family
 
@@ -36,7 +36,7 @@ Fonts available by default:
 - Rampart One
 - https://www.w3schools.com/cssref/css_websafe_fonts.asp
 
-sadly iframes can't use fonts from your site
+Sadly iframes can't use fonts from your site. All of the named fonts support Japanese.
 
 ### example of using both title and font
 
