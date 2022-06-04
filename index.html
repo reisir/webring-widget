@@ -6,5 +6,6 @@
 
 <script>
   const current = document.getElementById("current");
-  current.textContent = window.parent.location;
+  const referrer = document.referrer;
+  current.textContent = referrer || window.parent.location;
 </script>
