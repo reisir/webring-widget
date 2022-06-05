@@ -2,6 +2,8 @@
   <head>
     <title>webring-widget</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Load sites.js ASAP to make sure it's loaded and executed first -->
+    <script src="scripts/sites.js"></script>
     <style>
       @font-face {
         font-family: "DotGothic16";
@@ -41,7 +43,6 @@
         </span>
       </links>
     </widget>
-    <script src="scripts/sites.js"></script>
-    <script src="scripts/widget.js"></script>
+    <script src="scripts/widget.js" defer></script>
   </body>
 </html>
