@@ -12,19 +12,3 @@ const sites = [
   },
   { domain: "honouproductions.net", url: "https://honouproductions.net/" },
 ];
-
-// Do not edit the following
-
-// monkeywrench a circular access method to the array
-sites.circular = (i) => {
-  const n = sites.length;
-  i += n; // prevents negative indexes ( up to -n ) from erroring
-  return sites[((i % n) + n) % n];
-};
-
-// monkeywrench previous and next getters to the array
-sites.previous = (i) => sites.circular(i - 1);
-sites.next = (i) => sites.circular(i + 1);
-
-// You could argue that since this is valid JavaScript,
-// I'm not monkeywrenching, I'm extending Array.prototype
