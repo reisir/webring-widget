@@ -19,9 +19,9 @@ const referrer = (() => {
   else return new URL(r).hostname;
 })();
 
-// Override font-family to start loading the font asap
+// Override widget styles
 {
-  for (const key of params.keys()) {
+  for (const key of localParams.keys()) {
     $widget.style[key] = localParams.get(key);
   }
 }

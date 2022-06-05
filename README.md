@@ -48,6 +48,12 @@ Sadly iframes can't use fonts from your site. All of the named fonts support Jap
 ></iframe>
 ```
 
+## additional styling
+
+You can use any css property as a query parameter to style the widget. Remember to use the JS (camelCase) versions of property names. Here's a [list](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference) of css properties and their names in JS.
+
+example: `?fontFamily=Rampart One&backgroundColor=black&color=white` (this looks awful)
+
 # Adding your website
 
 Edit [scripts/sites](./scripts/sites.js) and create a push request. Or ask me on discord.
@@ -60,15 +66,15 @@ Make a list of all sites in the webring:
 <ul id="site-list"></ul>
 <script src="https://reisir.github.io/webring-widget/scripts/sites.js"></script>
 <script defer>
-const siteList = document.getElementById("site-list");
-sites.forEach((site) => {
-  const a = document.createElement("a");
-  a.href = site.url;
-  a.textContent = site.domain;
-  const li = document.createElement("li");
-  li.appendChild(a);
-  siteList.appendChild(li);
-});
+  const siteList = document.getElementById("site-list");
+  sites.forEach((site) => {
+    const a = document.createElement("a");
+    a.href = site.url;
+    a.textContent = site.domain;
+    const li = document.createElement("li");
+    li.appendChild(a);
+    siteList.appendChild(li);
+  });
 </script>
 ```
 
