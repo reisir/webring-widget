@@ -22,7 +22,7 @@ const referrer = (() => {
 // Override widget styles
 {
   for (const key of localParams.keys()) {
-    $widget.style[key] = localParams.get(key);
+    $widget.style.setProperty(key, localParams.get(key));
   }
 }
 

@@ -18,13 +18,15 @@ Example of embedding the widget in a header
 </div>
 ```
 
-## Styling the widget
+# Styling the widget
 
-### editing or removing the title
+You can use any css property as a query parameter to style the widget (container)
+
+## editing or removing the title
 
 You can change the default title by adding `?title=text` to the end of the iframe src attribute. To remove the title, set `?title` to `false` or `0`.
 
-### font-family
+## font-family
 
 You can change the font used by the widget by adding `?fontFamily=fontName` to the end of the iframe src attribute
 
@@ -38,29 +40,27 @@ Fonts available by default:
 
 Sadly iframes can't use fonts from your site. All of the named fonts support Japanese.
 
-### example of using both title and font
+## changing the link color
+
+The widget uses a custom css property called --link-color to control the color of the links. It works like the rest eg. `?--link-color=red`
+
+## styling example
 
 ```html
 <iframe
   style="width: 100%"
-  src="https://reisir.github.io/webring-widget/?title=false&fontFamily=DotGothic16"
+  src="https://reisir.github.io/webring-widget/?title=false&font-family=DotGothic16&--link-color=red&color=white"
   frameborder="0"
 ></iframe>
 ```
 
-## additional styling
-
-You can use any css property as a query parameter to style the widget. Remember to use the JS (camelCase) versions of property names. Here's a [list](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference) of css properties and their names in JS.
-
-example: `?fontFamily=Rampart One&backgroundColor=black&color=white` (this looks awful)
-
-# Adding your website
+# Joining the webring
 
 Edit [scripts/sites](./scripts/sites.js) and create a push request. Or ask me on discord.
 
 # Extra
 
-Make a list of all sites in the webring:
+Script to make a list of all the sites in the webring:
 
 ```html
 <ul id="site-list"></ul>

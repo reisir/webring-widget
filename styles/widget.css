@@ -12,12 +12,17 @@ links {
 }
 
 widget {
+  --link-color: blue;
   height: 100%;
   flex-direction: column;
 }
 
 links {
   flex-direction: row;
+}
+
+a {
+  color: var(--link-color) !important;
 }
 
 #current {
