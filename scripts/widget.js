@@ -1,3 +1,6 @@
+// All of these globals don't matter since the widget is meant to be used through an iframe
+// which will create it's own browsing context aka. the globals are contained in the iframe
+
 // Get widget embed url and params
 const localURL = new URL(window.location);
 const localParams = localURL.searchParams;
@@ -9,20 +12,21 @@ const $previous = document.getElementById("previous");
 const $next = document.getElementById("next");
 const $title = document.getElementById("title");
 
-// Override font-family to start loading the font asap
-{
-  const fontFamily = localParams.get("font");
-  if (fontFamily) $widget.style.fontFamily = fontFamily;
-}
-
-// Get referrer
+// Get the referrer hostname (or current page)
 const referrer = (() => {
   const r = document.referrer || document.location;
   if (!r) return;
   else return new URL(r).hostname;
 })();
 
-// Set middle item content
+// Override font-family to start loading the font asap
+{
+  for (const key of params.keys()) {
+    $widget.style[key] = localParams.get(key);
+  }
+}
+
+// Set middle item text
 {
   $current.prepend(referrer);
 }

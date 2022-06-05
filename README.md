@@ -26,7 +26,7 @@ You can change the default title by adding `?title=text` to the end of the ifram
 
 ### font-family
 
-You can change the font used by the widget by adding `?font=fontName` to the end of the iframe src attribute
+You can change the font used by the widget by adding `?fontFamily=fontName` to the end of the iframe src attribute
 
 Fonts available by default:
 
@@ -43,7 +43,7 @@ Sadly iframes can't use fonts from your site. All of the named fonts support Jap
 ```html
 <iframe
   style="width: 100%"
-  src="https://reisir.github.io/webring-widget/?title=false&font=DotGothic16"
+  src="https://reisir.github.io/webring-widget/?title=false&fontFamily=DotGothic16"
   frameborder="0"
 ></iframe>
 ```
@@ -54,7 +54,7 @@ Edit [scripts/sites](./scripts/sites.js) and create a push request. Or ask me on
 
 # Extra
 
-Making a list of all sites in the webring:
+Make a list of all sites in the webring:
 
 ```html
 <ul id="site-list"></ul>
