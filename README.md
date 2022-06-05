@@ -52,6 +52,26 @@ Sadly iframes can't use fonts from your site. All of the named fonts support Jap
 
 Edit [scripts/sites](./scripts/sites.js) and create a push request. Or ask me on discord.
 
+# Extra
+
+Making a list of all sites in the webring:
+
+```html
+<ul id="site-list"></ul>
+<script src="https://reisir.github.io/webring-widget/scripts/sites.js"></script>
+<script defer>
+const siteList = document.getElementById("site-list");
+sites.forEach((site) => {
+  const a = document.createElement("a");
+  a.href = site.url;
+  a.textContent = site.domain;
+  const li = document.createElement("li");
+  li.appendChild(a);
+  siteList.appendChild(li);
+});
+</script>
+```
+
 # Credits:
 
 [Fonts](./fonts/) from https://fonts.google.com/
