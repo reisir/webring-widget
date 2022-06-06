@@ -70,7 +70,7 @@ Script to make a list of all the sites in the webring:
   sites.forEach((site) => {
     const a = document.createElement("a");
     a.href = site.url;
-    a.textContent = site.domain;
+    a.textContent = site.title;
     const li = document.createElement("li");
     li.appendChild(a);
     siteList.appendChild(li);
@@ -78,6 +78,36 @@ Script to make a list of all the sites in the webring:
 </script>
 ```
 
+Script to make a table of all the sites in the webring
+
+```html
+<table id="site-list">
+  <tr>
+    <th>Title</th>
+    <th>Url</th>
+    <th>Description</th>
+  </tr>
+</table>
+<script src="https://reisir.github.io/webring-widget/scripts/sites.js"></script>
+<script defer>
+  const siteList = document.getElementById("site-list");
+  sites.forEach((site) => {
+    const tr = document.createElement("tr");
+    const td1 = document.createElement("td");
+    td1.textContent = site.title;
+    const td2 = document.createElement("td");
+    const a = document.createElement("a");
+    a.href = site.url;
+    a.textContent = site.title;
+    td2.appendChild(a);
+    const td3 = document.createElement("td");
+    td3.textContent = site.description;
+    [td1, td2, td3].forEach((td) => tr.appendChild(td));
+    siteList.appendChild(tr);
+  });
+</script>
+```
+
 # Credits:
 
-[Fonts](./fonts/) from https://fonts.google.com/
+- [Fonts](./fonts/) from https://fonts.google.com/
