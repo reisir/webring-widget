@@ -1,14 +1,23 @@
 // Array of sites in the webring
 const sites = [
   {
-    domain: "amvsashimi.neocities.org",
+    title: "AMV Sashimi Webring",
     url: "https://amvsashimi.neocities.org/",
+    description: "The homepage of Sashimi Webring",
   },
-  { domain: "amv.tools", url: "https://amv.tools/" },
-  { domain: "sashimi.khat.us", url: "https://sashimi.khat.us" },
   {
-    domain: "vidderscorner.wordpress.com",
-    url: "https://vidderscorner.wordpress.com/",
+    title: "amv.tools",
+    url: "https://amv.tools/",
+    description: "Editing tutorials and resources (AE, Vegas)",
   },
-  { domain: "honouproductions.net", url: "https://honouproductions.net/" },
+  {
+    title: "Vidders Corner",
+    url: "https://vidderscorner.wordpress.com/",
+    description: "Falconone's AMV blog",
+  },
+  {
+    title: "Honouproductions",
+    url: "https://www.honouproductions.net/",
+    description: "Lantis' AMV blog",
+  },
 ];
