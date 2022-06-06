@@ -12,11 +12,13 @@ const $previous = document.getElementById("previous");
 const $next = document.getElementById("next");
 const $title = document.getElementById("title");
 
+// www. pattern
+const www = /^www\./im;
 // Get the referrer hostname (or current page)
 const referrer = (() => {
   const r = document.referrer || document.location;
   if (!r) return;
-  else return new URL(r).hostname;
+  else return new URL(r).hostname.replace(www, "");
 })();
 
 // Override widget styles
@@ -55,7 +57,9 @@ const referrer = (() => {
   // You could argue that since this is valid JavaScript,
   // I'm not monkeywrenching, I'm extending Array.prototype
 
-  const currentIndex = sites.findIndex((s) => s.domain === referrer);
+  const currentIndex = sites.findIndex(
+    (s) => new URL(s.url).hostname.replace(www, "") === referrer
+  );
   if (currentIndex === -1) console.error(`You'r not in the webring!!! D:`);
 
   const previous = sites.circular(currentIndex - 1);
