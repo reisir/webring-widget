@@ -28,7 +28,7 @@ You can change the default title by adding `?title=text` to the end of the ifram
 
 ## font-family
 
-You can change the font used by the widget by adding `?fontFamily=fontName` to the end of the iframe src attribute
+You can change the font used by the widget by adding `?font-family=fontName` to the end of the iframe src attribute
 
 Fonts available by default:
 
