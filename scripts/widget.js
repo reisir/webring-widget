@@ -14,6 +14,7 @@ const $title = document.getElementById("title");
 
 // www. pattern
 const www = /^www\./im;
+
 // Get the referrer hostname (or current page)
 const referrer = (() => {
   const r = document.referrer || document.location;
@@ -21,16 +22,17 @@ const referrer = (() => {
   else return new URL(r).hostname.replace(www, "");
 })();
 
+// Find the current site from the sites array
+const currentIndex = sites.findIndex(
+  (s) => new URL(s.url).hostname.replace(www, "") === referrer
+);
+if (currentIndex === -1) console.error(`You're not in the webring!!! D:`);
+
 // Override widget styles
 {
   for (const key of localParams.keys()) {
     $widget.style.setProperty(key, localParams.get(key));
   }
-}
-
-// Set middle item text
-{
-  $current.prepend(referrer);
 }
 
 // Allow widget title overrides
@@ -41,6 +43,11 @@ const referrer = (() => {
     if (title == 0 || title == "false") $title.remove();
     else $title.textContent = title;
   }
+}
+
+// Set middle item text
+{
+  $current.prepend(sites[currentIndex].title);
 }
 
 // Set previous and next href from sites
@@ -56,11 +63,6 @@ const referrer = (() => {
   sites.next = (i) => sites.circular(i + 1);
   // You could argue that since this is valid JavaScript,
   // I'm not monkeywrenching, I'm extending Array.prototype
-
-  const currentIndex = sites.findIndex(
-    (s) => new URL(s.url).hostname.replace(www, "") === referrer
-  );
-  if (currentIndex === -1) console.error(`You'r not in the webring!!! D:`);
 
   const previous = sites.circular(currentIndex - 1);
   $previous.href = previous.url;
