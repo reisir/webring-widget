@@ -16,7 +16,7 @@ const sites = [
     description: "Falconone's AMV blog",
   },
   {
-    title: "Honouproductions",
+    title: "Honou Productions",
     url: "https://www.honouproductions.net/",
     description: "Lantis' AMV blog",
   },
