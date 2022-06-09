@@ -1,3 +1,4 @@
+/* Center the widget inside it's container */
 webring-widget {
   width: 100%;
   height: 100%;
@@ -7,14 +8,22 @@ webring-widget {
   align-items: center;
 }
 
+/* Title styles */
+webring-widget #title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Add spacing to the bottom row items */
 webring-widget #links * {
   margin: 0 0.25rem;
 }
 
-webring-widget a,
-webring-widget a:hover,
-webring-widget a:active,
-webring-widget a:hover {
+/* Arrow specific styles */
+webring-widget .arrow,
+webring-widget .arrow:hover,
+webring-widget .arrow:active,
+webring-widget .arrow:hover {
   text-decoration: none;
   color: inherit;
 }

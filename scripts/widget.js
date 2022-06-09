@@ -35,8 +35,11 @@ if (!widget) throw Error("Couldn't find the webring-widget element");
 
 // Title
 const title = document.createElement("span");
-title.textContent = sites[0].title;
+const titleLink = document.createElement("a");
+titleLink.textContent = sites[0].title;
+titleLink.href = sites[0].url;
 title.id = "title";
+title.append(titleLink);
 
 // Links container
 const links = document.createElement("div");
@@ -44,13 +47,15 @@ links.id = "links";
 
 const previous = document.createElement("a");
 previous.id = "previous";
-previous.href = previousSite.url; // TODO
+previous.href = previousSite.url;
 previous.innerHTML = "&larr;";
+previous.classList.add("arrow");
 
 const next = document.createElement("a");
 next.id = "next";
-next.href = nextSite.url; // TODO
+next.href = nextSite.url;
 next.innerHTML = "&rarr;";
+next.classList.add("arrow");
 
 const current = document.createElement("span");
 current.id = "current";
