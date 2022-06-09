@@ -1,72 +1,61 @@
-// All of these globals don't matter since the widget is meant to be used through an iframe
-// which will create it's own browsing context aka. the globals are contained in the iframe
+import { sites } from "./sites.js";
+if (!sites) throw Error("Browser doesn't support JS modules");
 
-// Get widget embed url and params
-const localURL = new URL(window.location);
-const localParams = localURL.searchParams;
+/*
+ * Constants
+ */
 
-// Get widget elements
-const $widget = document.getElementsByTagName("widget")[0];
-const $current = document.getElementById("current");
-const $previous = document.getElementById("previous");
-const $next = document.getElementById("next");
-const $title = document.getElementById("title");
+const www = /^www\./im; // www. regex pattern
+const hostNoWWW = (s) => new URL(s).hostname.replace(www, "");
+const currentHost = hostNoWWW(window.location);
 
-// www. pattern
-const www = /^www\./im;
+// Find the current sites index
+const currentIndex = sites.findIndex((s) => hostNoWWW(s.url) === currentHost);
+if (currentIndex === -1) console.error(`${currentHost} is not in the webring`);
 
-// Get the referrer hostname (or current page)
-const referrer = (() => {
-  const r = document.referrer || document.location;
-  if (!r) return;
-  else return new URL(r).hostname.replace(www, "");
-})();
+// Get the current site object
+const currentSite =
+  currentIndex === -1 ? { title: currentHost } : sites[currentIndex];
 
-// Find the current site from the sites array
-const currentIndex = sites.findIndex(
-  (s) => new URL(s.url).hostname.replace(www, "") === referrer
-);
-if (currentIndex === -1) console.error(`You're not in the webring!!! D:`);
+// Get the other site objects needed
+const getSiteCircular = (i) => {
+  const n = sites.length;
+  return sites[(((i + n) % n) + n) % n];
+};
+const previousSite = getSiteCircular(currentIndex - 1);
+const nextSite = getSiteCircular(currentIndex + 1);
 
-// Override widget styles
-{
-  for (const key of localParams.keys()) {
-    $widget.style.setProperty(key, localParams.get(key));
-  }
-}
+/*
+ * Widget
+ */
 
-// Allow widget title overrides
-{
-  const title = localParams.get("title");
-  if (!title) {
-  } else {
-    if (title == 0 || title == "false") $title.remove();
-    else $title.textContent = title;
-  }
-}
+// Get the widget element
+const widget = document.getElementsByTagName("webring-widget")[0];
+if (!widget) throw Error("Couldn't find the webring-widget element");
 
-// Set middle item text
-{
-  $current.prepend(sites[currentIndex].title);
-}
+// Title
+const title = document.createElement("span");
+title.textContent = sites[0].title;
+title.id = "title";
 
-// Set previous and next href from sites
-{
-  // sites is a global from ./sites.js
-  // Here we monkeywrench a bunch of stuff to the array for ease of use
-  sites.circular = (i) => {
-    const n = sites.length;
-    i += n; // prevents negative indexes ( up to -n ) from erroring
-    return sites[((i % n) + n) % n];
-  };
-  sites.previous = (i) => sites.circular(i - 1);
-  sites.next = (i) => sites.circular(i + 1);
-  // You could argue that since this is valid JavaScript,
-  // I'm not monkeywrenching, I'm extending Array.prototype
+// Links container
+const links = document.createElement("div");
+links.id = "links";
 
-  const previous = sites.circular(currentIndex - 1);
-  $previous.href = previous.url;
+const previous = document.createElement("a");
+previous.id = "previous";
+previous.href = previousSite.url; // TODO
+previous.innerHTML = "&larr;";
 
-  const next = sites.circular(currentIndex + 1);
-  $next.href = next.url;
-}
+const next = document.createElement("a");
+next.id = "next";
+next.href = nextSite.url; // TODO
+next.innerHTML = "&rarr;";
+
+const current = document.createElement("span");
+current.id = "current";
+current.textContent = currentSite.title;
+
+// Append elements
+links.append(previous, current, next);
+widget.append(title, links);

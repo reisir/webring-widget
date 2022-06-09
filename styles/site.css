@@ -1,0 +1,15 @@
+html,
+body {
+  background-color: black;
+  color: white;
+}
+
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+}
+
+body > * {
+  margin: 0.5rem;
+}

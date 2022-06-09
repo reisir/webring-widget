@@ -1,0 +1,13 @@
+#webring-list {
+  list-style: none;
+  padding: 0;
+  color: orange;
+}
+
+#webring-list a,
+#webring-list a:hover,
+#webring-list a:active,
+#webring-list a:hover {
+  text-decoration: none;
+  color: inherit;
+}

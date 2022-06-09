@@ -1,45 +1,20 @@
-:root {
-  --webring-widget-gap: 1rem;
-}
-
-widget,
-links {
+webring-widget {
   width: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-widget {
-  --link-color: blue;
   height: 100%;
-  flex-direction: column;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
-links {
-  flex-direction: row;
+webring-widget #links * {
+  margin: 0 0.25rem;
 }
 
-a {
-  color: var(--link-color) !important;
+webring-widget a,
+webring-widget a:hover,
+webring-widget a:active,
+webring-widget a:hover {
   text-decoration: none;
-  font-weight: bold;
-}
-
-#current {
-  position: relative;
-}
-
-.anchored {
-  position: absolute;
-  top: 0;
-}
-
-#previous.anchored {
-  right: calc(100% + var(--webring-widget-gap));
-}
-
-#next.anchored {
-  left: calc(100% + var(--webring-widget-gap));
+  color: inherit;
 }

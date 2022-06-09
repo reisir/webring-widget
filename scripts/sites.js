@@ -1,5 +1,5 @@
 // Array of sites in the webring
-const sites = [
+export const sites = [
   {
     title: "AMV Sashimi Webring",
     url: "https://amvsashimi.neocities.org/",
@@ -21,3 +21,5 @@ const sites = [
     description: "Lantis' AMV blog",
   },
 ];
+
+export default sites;

@@ -2,8 +2,53 @@
   <head>
     <title>webring-widget</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Load sites.js ASAP to make sure it's loaded and executed first -->
-    <script src="scripts/sites.js"></script>
+    <style>
+      :root {
+        --webring-widget-gap: 1rem;
+      }
+
+      widget,
+      links {
+        width: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      widget {
+        --link-color: blue;
+        height: 100%;
+        flex-direction: column;
+      }
+
+      links {
+        flex-direction: row;
+      }
+
+      a {
+        color: var(--link-color) !important;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      #current {
+        position: relative;
+      }
+
+      .anchored {
+        position: absolute;
+        top: 0;
+      }
+
+      #previous.anchored {
+        right: calc(100% + var(--webring-widget-gap));
+      }
+
+      #next.anchored {
+        left: calc(100% + var(--webring-widget-gap));
+      }
+    </style>
     <style>
       @font-face {
         font-family: "DotGothic16";
@@ -30,19 +75,96 @@
         src: url(./fonts/RampartOne-Regular.ttf) format("truetype");
       }
     </style>
-    <link rel="stylesheet" href="styles/widget.css" />
   </head>
-
   <body>
     <widget>
       <span id="title">AMV Sashimi Webring</span>
       <links>
         <span id="current">
-          <a href="" target="_top" class="anchored" id="previous" alt="previous">←</a>
+          <a href="" target="_top" class="anchored" id="previous" alt="previous"
+            >←</a
+          >
           <a href="" target="_top" class="anchored" id="next" alt="next">→</a>
         </span>
       </links>
     </widget>
-    <script src="scripts/widget.js" defer></script>
+    <script type="module" defer>
+      import { sites } from "./scripts/sites.js";
+      // All of these globals don't matter since the widget is meant to be used through an iframe
+      // which will create it's own browsing context aka. the globals are contained in the iframe
+
+      console.error(
+        "using an iframe for the webring-widget is deprecated, see https://github.com/reisir/webring-widget for instructions on using the new script based widget"
+      );
+
+      // Get widget embed url and params
+      const localURL = new URL(window.location);
+      const localParams = localURL.searchParams;
+
+      // Get widget elements
+      const $widget = document.getElementsByTagName("widget")[0];
+      const $current = document.getElementById("current");
+      const $previous = document.getElementById("previous");
+      const $next = document.getElementById("next");
+      const $title = document.getElementById("title");
+
+      // www. pattern
+      const www = /^www\./im;
+
+      // Get the referrer hostname (or current page)
+      const referrer = (() => {
+        const r = document.referrer || document.location;
+        if (!r) return;
+        else return new URL(r).hostname.replace(www, "");
+      })();
+
+      // Find the current site from the sites array
+      const currentIndex = sites.findIndex(
+        (s) => new URL(s.url).hostname.replace(www, "") === referrer
+      );
+
+      // Override widget styles
+      {
+        for (const key of localParams.keys()) {
+          $widget.style.setProperty(key, localParams.get(key));
+        }
+      }
+
+      // Allow widget title overrides
+      {
+        const title = localParams.get("title");
+        if (!title) {
+        } else {
+          if (title == 0 || title == "false") $title.remove();
+          else $title.textContent = title;
+        }
+      }
+
+      // Set middle item text
+      {
+        $current.prepend(sites[currentIndex]?.title);
+      }
+
+      // Set previous and next href from sites
+      {
+        // sites is a global from ./sites.js
+        // Here we monkeywrench a bunch of stuff to the array for ease of use
+        sites.circular = (i) => {
+          const n = sites.length;
+          i += n; // prevents negative indexes ( up to -n ) from erroring
+          return sites[((i % n) + n) % n];
+        };
+        sites.previous = (i) => sites.circular(i - 1);
+        sites.next = (i) => sites.circular(i + 1);
+        // You could argue that since this is valid JavaScript,
+        // I'm not monkeywrenching, I'm extending Array.prototype
+
+        const previous = sites.circular(currentIndex - 1);
+        $previous.href = previous.url;
+
+        const next = sites.circular(currentIndex + 1);
+        $next.href = next.url;
+      }
+    </script>
   </body>
 </html>

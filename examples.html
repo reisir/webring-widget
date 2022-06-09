@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>webring-widget</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/widget.css" />
+    <link rel="stylesheet" href="styles/table.css" />
+    <link rel="stylesheet" href="styles/list.css" />
+    <link rel="stylesheet" href="styles/site.css" />
+  </head>
+  <body>
+    <h1>webring-widget examples</h1>
+    <h2>widget</h2>
+    <webring-widget>
+      <script type="module" src="scripts/widget.js" defer></script>
+    </webring-widget>
+    <h2>site list</h2>
+    <ul id="webring-list">
+      <script type="module" src="scripts/list.js" defer></script>
+    </ul>
+    <h2>site table</h2>
+    <table id="webring-table">
+      <script type="module" src="scripts/table.js" defer></script>
+    </table>
+    <h2>random site button</h2>
+    <div>
+      <button id="random-site">Random Site</button>
+      <script type="module" src="./scripts/random.js" defer></script>
+    </div>
+  </body>
+</html>
