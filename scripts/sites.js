@@ -3,7 +3,12 @@ export const sites = [
   {
     title: "AMV Sashimi Webring",
     url: "https://amvsashimi.neocities.org/",
-    description: "The homepage of Sashimi Webring",
+    description: "The homepage of the AMV Sashimi Webring",
+  },
+    {
+    title: "AMV Sashimi",
+    url: "https://sashimi.khat.us/",
+    description: "AMV Sashimi Official Website",
   },
   {
     title: "amv.tools",
