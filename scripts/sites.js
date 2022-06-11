@@ -25,6 +25,11 @@ export const sites = [
     url: "https://www.honouproductions.net/",
     description: "Lantis' AMV blog",
   },
+  {
+    title: "Synæsthesia Productions",
+    url: "https://synaesthesia.neocities.org/",
+    description: "vibes n' shit",
+  },
 ];
 
 export default sites;
