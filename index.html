@@ -93,8 +93,8 @@
       // All of these globals don't matter since the widget is meant to be used through an iframe
       // which will create it's own browsing context aka. the globals are contained in the iframe
 
-      console.error(
-        "using an iframe for the webring-widget is deprecated, see https://github.com/reisir/webring-widget for instructions on using the new script based widget"
+      console.info(
+        "Using the iframe webring-widget is not recommended, see https://github.com/reisir/webring-widget for instructions on using the new script based widget. If your host doesn't allow scripts, you can continue to use the iframe widget."
       );
 
       // Get widget embed url and params
