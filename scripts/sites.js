@@ -30,6 +30,11 @@ export const sites = [
     url: "https://synaesthesia.neocities.org/",
     description: "vibes n' shit",
   },
+   {
+    title: "lim",
+    url: "https://lim.neocities.org/",
+    description: "splish",
+  },
 ];
 
 export default sites;
