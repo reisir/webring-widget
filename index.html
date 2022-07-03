@@ -89,17 +89,23 @@
       </links>
     </widget>
     <script type="module" defer>
-      import { sites } from "./scripts/sites.js";
-      // All of these globals don't matter since the widget is meant to be used through an iframe
-      // which will create it's own browsing context aka. the globals are contained in the iframe
+      import {
+        localParams,
+        sites,
+        nextSite,
+        previousSite,
+      } from "./scripts/common.js";
 
-      console.info(
-        "Using the iframe webring-widget is not recommended, see https://github.com/reisir/webring-widget for instructions on using the new script based widget. If your host doesn't allow scripts, you can continue to use the iframe widget."
-      );
+      const loc = document.location.search;
+      const params = new URLSearchParams(loc);
+      const suppress = params.get("suppress");
 
-      // Get widget embed url and params
-      const localURL = new URL(window.location);
-      const localParams = localURL.searchParams;
+      if (!suppress) {
+        console.info(
+          "Using the iframe webring-widget is not recommended, see https://github.com/reisir/webring-widget for instructions on using the new script based widget. If your host doesn't allow scripts, you can continue to use the iframe widget."
+        );
+        console.info("Add ?suppress=true to suppress these messages.");
+      }
 
       // Get widget elements
       const $widget = document.getElementsByTagName("widget")[0];
@@ -107,21 +113,6 @@
       const $previous = document.getElementById("previous");
       const $next = document.getElementById("next");
       const $title = document.getElementById("title");
-
-      // www. pattern
-      const www = /^www\./im;
-
-      // Get the referrer hostname (or current page)
-      const referrer = (() => {
-        const r = document.referrer || document.location;
-        if (!r) return;
-        else return new URL(r).hostname.replace(www, "");
-      })();
-
-      // Find the current site from the sites array
-      const currentIndex = sites.findIndex(
-        (s) => new URL(s.url).hostname.replace(www, "") === referrer
-      );
 
       // Override widget styles
       {
@@ -142,27 +133,15 @@
 
       // Set middle item text
       {
-        $current.prepend(sites[currentIndex]?.title);
+        $current.prepend(sites.current?.title);
       }
 
       // Set previous and next href from sites
       {
-        // sites is a global from ./sites.js
-        // Here we monkeywrench a bunch of stuff to the array for ease of use
-        sites.circular = (i) => {
-          const n = sites.length;
-          i += n; // prevents negative indexes ( up to -n ) from erroring
-          return sites[((i % n) + n) % n];
-        };
-        sites.previous = (i) => sites.circular(i - 1);
-        sites.next = (i) => sites.circular(i + 1);
-        // You could argue that since this is valid JavaScript,
-        // I'm not monkeywrenching, I'm extending Array.prototype
-
-        const previous = sites.circular(currentIndex - 1);
+        const previous = sites.previous();
         $previous.href = previous.url;
 
-        const next = sites.circular(currentIndex + 1);
+        const next = sites.next();
         $next.href = next.url;
       }
     </script>

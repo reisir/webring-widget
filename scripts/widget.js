@@ -1,29 +1,18 @@
-import { sites } from "./sites.js";
+import { sites } from "./common.js";
 if (!sites) throw Error("Browser doesn't support JS modules");
 
 /*
  * Constants
  */
 
-const www = /^www\./im; // www. regex pattern
-const hostNoWWW = (s) => new URL(s).hostname.replace(www, "");
-const currentHost = hostNoWWW(window.location);
-
-// Find the current sites index
-const currentIndex = sites.findIndex((s) => hostNoWWW(s.url) === currentHost);
-if (currentIndex === -1) console.error(`${currentHost} is not in the webring`);
-
 // Get the current site object
-const currentSite =
-  currentIndex === -1 ? { title: currentHost } : sites[currentIndex];
-
-// Get the other site objects needed
-const getSiteCircular = (i) => {
-  const n = sites.length;
-  return sites[(((i + n) % n) + n) % n];
-};
-const previousSite = getSiteCircular(currentIndex - 1);
-const nextSite = getSiteCircular(currentIndex + 1);
+let currentSite = sites.current;
+if (!currentSite) {
+  console.log("Current site isn't part of the webring");
+  currentSite = { title: "example", url: "example.com" };
+}
+const previousSite = sites.previous();
+const nextSite = sites.next();
 
 /*
  * Widget
