@@ -35,6 +35,11 @@ export const sites = [
     url: "https://lim.neocities.org/",
     description: "splish",
   },
+  {
+    title: "SQ Rambles About Vids",
+    url: "https://standardquip.dreamwidth.org/",
+    description: "Blogs about personal life, AMVs, and vidding",
+  },
 ];
 
 export default sites;
