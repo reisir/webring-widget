@@ -9,10 +9,34 @@
   </head>
   <body>
     <h1>webring-widget examples</h1>
-    <h2>widget</h2>
+    <h2>widget script</h2>
+
     <webring-widget>
       <script type="module" src="scripts/widget.js" defer></script>
     </webring-widget>
+
+    <h2>plain HTML widget</h2>
+    <webring-widget>
+      <span id="title">
+        <a href="https://amvsashimi.neocities.org/">AMV Sashimi Webring </a>
+      </span>
+      <div id="links">
+        <a
+          id="previous"
+          href="https://reisir.github.io/webring-widget/previous"
+          class="arrow"
+          >←</a
+        >
+        <span id="current">YOUR SITE NAME HERE</span>
+        <a
+          id="next"
+          href="https://reisir.github.io/webring-widget/next"
+          class="arrow"
+          >→</a
+        >
+      </div>
+    </webring-widget>
+
     <h2>site list</h2>
     <ul id="webring-list">
       <script type="module" src="scripts/list.js" defer></script>

@@ -1,6 +1,6 @@
 # webring-widget
 
-Webring Widget and [other scripts](https://reisir.github.io/webring-widget/examples.html) for the [AMV Sashimi Webring](https://amvsashimi.neocities.org/). 
+Webring Widget and [other scripts](https://reisir.github.io/webring-widget/examples.html) for the [AMV Sashimi Webring](https://amvsashimi.neocities.org/).
 
 Only works on browsers that support JS modules, so most browsers after mid 2018
 
@@ -95,4 +95,46 @@ a [base stylesheet](styles/table.css) is available for the table, you can includ
   src="https://reisir.github.io/webring-widget/scripts/random.js"
   defer
 ></script>
+```
+
+## Using the webring-widget as plain HTML (for hosts that do not support scripts) (this is the least recommended method of using the widget)
+
+Add this HTML snippet on your site. You need to manually change your sites name in the marked spot.
+
+The /next and /previous links are redirects that can detect the site you're coming from, if the users browser allows it. This is usually the case but some browsers or security freaks out there might have disabled it. If the widget site can't detect a referrer, it will redirect the user to the main sashimi webring site.
+
+```html
+<webring-widget>
+  <span id="title">
+    <a href="https://amvsashimi.neocities.org/">AMV Sashimi Webring </a>
+  </span>
+  <div id="links">
+    <a
+      id="previous"
+      href="https://reisir.github.io/webring-widget/previous"
+      class="arrow"
+      >←</a
+    >
+    <span id="current">YOUR SITE NAME HERE</span>
+    <a
+      id="next"
+      href="https://reisir.github.io/webring-widget/next"
+      class="arrow"
+      >→</a
+    >
+  </div>
+</webring-widget>
+```
+
+To make the widget look right, copy the contents of [widget.css](./styles/widget.css) onto your site, either into a stylesheet or if you have no other option, into a \<style\> tag in your \<head\>.
+
+Alternatively, if your host allows it, add a \<link\> to the widget.css stylesheet to get the base style working without having the css taking up space in your html.
+
+```html
+<head>
+  <link
+    rel="stylesheet"
+    href="https://reisir.github.io/webring-widget/styles/widget.css"
+  />
+</head>
 ```
