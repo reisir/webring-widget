@@ -1,7 +1,7 @@
 // Array of sites in the webring
 export const sites = [
   {
-    title: "AMV Sashimi Webring",
+    title: "BentoVid webring",
     url: "https://amvsashimi.neocities.org/",
     description: "The homepage of the AMV Sashimi Webring",
   },

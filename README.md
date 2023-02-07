@@ -106,7 +106,7 @@ The /next and /previous links are redirects that can detect the site you're comi
 ```html
 <webring-widget>
   <span id="title">
-    <a href="https://amvsashimi.neocities.org/">AMV Sashimi Webring </a>
+    <a href="https://amvsashimi.neocities.org/">BentoVid webring</a>
   </span>
   <div id="links">
     <a
