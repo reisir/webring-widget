@@ -1,25 +1,25 @@
 // Array of sites in the webring
 export const sites = [
+  // {
+  //   title: "BentoVid webring",
+  //   url: "https://amvsashimi.neocities.org/",
+  //   description: "The homepage of the AMV Sashimi Webring",
+  // },
   {
     title: "BentoVid webring",
-    url: "https://amvsashimi.neocities.org/",
-    description: "The homepage of the AMV Sashimi Webring",
-  },
-  {
-    title: "AMV Sashimi",
-    url: "https://sashimi.khat.us/",
-    description: "AMV Sashimi Official Website",
+    url: "https://bentovid.com/",
+    description: "BentoVid Official Website",
   },
   {
     title: "amv.tools",
     url: "https://amv.tools/",
     description: "Editing tutorials and resources (AE, Vegas)",
   },
-  {
-    title: "Vidders Corner",
-    url: "https://vidderscorner.wordpress.com/",
-    description: "Falconone's AMV blog",
-  },
+  // {
+  //   title: "Vidders Corner",
+  //   url: "https://vidderscorner.wordpress.com/",
+  //   description: "Falconone's AMV blog",
+  // },
   {
     title: "Honou Productions",
     url: "https://www.honouproductions.net/",
