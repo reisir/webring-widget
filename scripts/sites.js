@@ -13,7 +13,7 @@ export const sites = [
   {
     title: "amv.tools",
     url: "https://amv.tools/",
-    description: "Editing tutorials and resources (AE, Vegas)",
+    description: "Editing guides and resources (for AE & Vegas Pro)",
   },
   // {
   //   title: "Vidders Corner",
@@ -25,11 +25,15 @@ export const sites = [
     url: "https://synaesthesia.neocities.org/",
     description: "vibes n' shit",
   },
-
   {
     title: "SQ Rambles About Vids",
     url: "https://standardquip.dreamwidth.org/",
     description: "Blogs about personal life, AMVs, and vidding",
+  },
+  {
+    title: "cutfilmtovent",
+    url: "https://cutfilmtovent.wordpress.com/",
+    description: "a blog about AMVs and related media",
   },
 ];
 
