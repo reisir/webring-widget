@@ -1,3 +1,4 @@
+import { webringUrl } from "./sites.js";
 import { sites } from "./common.js";
 if (!sites) throw Error("Browser doesn't support JS modules");
 
@@ -26,7 +27,7 @@ if (!widget) throw Error("Couldn't find the webring-widget element");
 const title = document.createElement("span");
 const titleLink = document.createElement("a");
 titleLink.textContent = sites[0].title;
-titleLink.href = sites[0].url;
+titleLink.href = webringUrl;
 title.id = "title";
 title.append(titleLink);
 
