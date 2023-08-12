@@ -1,12 +1,12 @@
 // Array of sites in the webring
 export const sites = [
   // {
-  //   title: "BentoVid webring",
-  //   url: "https://amvsashimi.neocities.org/",
-  //   description: "The homepage of the AMV Sashimi Webring",
+  //   title: "BentoVid Webring",
+  //   url: "https://bentovid.com/webring",
+  //   description: "The homepage of the BentoVid Webring",
   // },
   {
-    title: "BentoVid webring",
+    title: "BentoVid.com",
     url: "https://bentovid.com/",
     description: "BentoVid Official Website",
   },
@@ -21,20 +21,11 @@ export const sites = [
   //   description: "Falconone's AMV blog",
   // },
   {
-    title: "Honou Productions",
-    url: "https://www.honouproductions.net/",
-    description: "Lantis' AMV blog",
-  },
-  {
     title: "Synæsthesia Productions",
     url: "https://synaesthesia.neocities.org/",
     description: "vibes n' shit",
   },
-   {
-    title: "lim",
-    url: "https://lim.neocities.org/",
-    description: "splish",
-  },
+
   {
     title: "SQ Rambles About Vids",
     url: "https://standardquip.dreamwidth.org/",
