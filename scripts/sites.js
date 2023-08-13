@@ -31,6 +31,11 @@ export const sites = [
     url: "https://crakthesky.wordpress.com/",
     description: "AMV analysis and critique",
   },
+  {
+    title: "Vidderscorner",
+    url: "vidderscorner.wordpress.com/",
+    description: " ",
+  }
 ];
 
 export default sites;
