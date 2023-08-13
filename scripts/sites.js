@@ -1,10 +1,5 @@
-// Location of the webring landing page
-export const webringUrl = "https://bentovid.com/webring";
+// Sites in the webring, add the widget on your site, add your own site to the end and make a Pull Request to be added!
 
-// Title of the webring widget
-export const webringTitle = "BentoVid Webring";
-
-// Array of sites in the webring
 export const sites = [
   {
     title: "BentoVid.com",

@@ -1,5 +1,4 @@
-import { webringUrl, webringTitle } from "./sites.js";
-import { sites } from "./common.js";
+import { sites, webringUrl, webringTitle } from "./common.js";
 if (!sites) throw Error("Browser doesn't support JS modules");
 
 /*

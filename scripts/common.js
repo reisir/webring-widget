@@ -1,3 +1,9 @@
+// Location of the webring landing page
+export const webringUrl = "https://bentovid.com/webring";
+
+// Title of the webring widget
+export const webringTitle = "BentoVid Webring";
+
 import sitesArr from "./sites.js";
 
 // Get widget embed url and params
