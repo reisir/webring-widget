@@ -26,6 +26,11 @@ export const sites = [
     url: "https://cutfilmtovent.wordpress.com/",
     description: "a blog about AMVs and related media",
   },
+  {
+    title: "Subculture Diaries",
+    url: "https://crakthesky.wordpress.com/",
+    description: "AMV analysis and critique",
+  },
 ];
 
 export default sites;
