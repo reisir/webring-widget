@@ -34,7 +34,7 @@ export const sites = [
   {
     title: "Vidderscorner",
     url: "vidderscorner.wordpress.com/",
-    description: " ",
+    description: "AMV and editing related opinions and more",
   }
 ];
 
